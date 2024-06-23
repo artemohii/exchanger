@@ -58,6 +58,9 @@ img {
   width: 100%;
   object-fit: cover; }
 
+.error-message {
+  color: red; }
+
 .exchanger {
   display: flex;
   flex-direction: column;
@@ -86,6 +89,7 @@ img {
   .exchanger__currencies {
     height: 0;
     background: #ffffff;
+    z-index: 10;
     color: #262626;
     overflow: auto;
     transition: 0.2s;
@@ -94,7 +98,8 @@ img {
     .exchanger__currencies.active {
       height: 200px; }
   .exchanger__li {
-    cursor: pointer; }
+    cursor: pointer;
+    padding: 5px; }
     .exchanger__li:hover {
       background: #45454546; }
   .exchanger__label {

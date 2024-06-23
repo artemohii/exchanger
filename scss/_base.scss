@@ -63,7 +63,10 @@ img {
   width: 100%;
   object-fit: cover;
 }
+.error-message {
+  color: red;
 
+}
 .exchanger {
   display: flex;
   flex-direction: column;
@@ -106,17 +109,20 @@ img {
   &__currencies {
     height: 0; 
     background: $color-white;
+    z-index: 10;
     color: #262626;
     overflow: auto;
     transition: 0.2s;
     position: absolute;
     width: 100%;
+
     &.active {
       height: 200px;
     }
   }
   &__li {
     cursor: pointer;
+    padding: 5px;
     &:hover {
       background: #45454546;
     }
@@ -139,6 +145,7 @@ img {
   }
 
   // .exchanger__button
+  
 
   &__button {
     width: 20px;

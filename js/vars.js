@@ -7,4 +7,5 @@ export default {
   form: document.querySelector(".exchanger__form"),
   fromErrorSpan: document.getElementById("fromError"),
   toErrorSpan: document.getElementById("toError"),
+  reverseButton: document.querySelector(".exchanger__button")
 };

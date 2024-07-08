@@ -65,7 +65,10 @@ img {
 }
 .error-message {
   color: red;
-
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+  font-size: 14px;
 }
 .exchanger {
   display: flex;
@@ -107,7 +110,7 @@ img {
   }
 
   &__currencies {
-    height: 0; 
+    height: 0;
     background: $color-white;
     z-index: 10;
     color: #262626;
@@ -145,11 +148,8 @@ img {
   }
 
   // .exchanger__button
-  
 
   &__button {
-    width: 20px;
-    height: 16px;
     cursor: pointer;
   }
 

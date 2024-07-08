@@ -1,29 +1,18 @@
 /* вывести сообщение об ошибке если не совпадает код валюты с кодом из state*/
 import state from "./state.js";
-import vars from "./vars.js";
-const { fromErrorSpan, toErrorSpan } = vars;
 
-function validateCurrency() {
-  const {
-    codes,
-    convertData: { from, to },
-  } = state;
-  
+function validateCurrency(currency, errorSpan) {
+  const { codes } = state;
 
-  
-  const isFromCorrect = codes.some(([code]) => code === from);
-  const isToCorrect = codes.some(([code]) => code === to);
+  const isCorrect = codes.some(([code]) => code === currency);
 
-  if (!isFromCorrect) {
-    fromErrorSpan.textContent = "error";
+  if (!isCorrect) {
+    errorSpan.textContent = "Choose correct currency";
+    return false;
+  } else {
+    errorSpan.textContent = "";
+    return true;
   }
-
-  if (!isToCorrect) {
-    toErrorSpan.textContent = "error";
-  }
-
-  console.log(isFromCorrect, isToCorrect );
-  console.log(codes, from, to);
 }
 
 export { validateCurrency };

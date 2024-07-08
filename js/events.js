@@ -2,13 +2,22 @@ import vars from "./vars.js";
 import state from "./state.js";
 import { filterCurrencies } from "./utils.js";
 import { validateCurrency } from "./validate.js";
-const { currenciesInputs, currenciesLists, form, amount, from, to } = vars;
-const { from: fromVal, to: toVal } = state.convertData;
+const {
+  currenciesInputs,
+  currenciesLists,
+  form,
+  amount,
+  from,
+  to,
+  toErrorSpan,
+  fromErrorSpan,
+  reverseButton,
+} = vars;
 
-console.log(fromVal, toVal);
 currenciesInputs.forEach((input) => {
   input.addEventListener("click", () => {
-    input.nextElementSibling.classList.add("active");
+    input.nextElementSibling.style.height = "200px";
+    /* ??? */
   });
 
   input.addEventListener("input", filterCurrencies);
@@ -18,6 +27,8 @@ window.addEventListener("click", (e) => {
   if (!e.target.classList.contains("exchanger__input")) {
     currenciesLists.forEach((list) => {
       list.style.height = "0";
+
+      /* ??? */
     });
   }
 });
@@ -38,7 +49,27 @@ form.addEventListener("submit", (e) => {
     from: from.value,
     to: to.value,
   };
-  /* вызов фуекции по проверки кодов codes */
-  validateCurrency()
 
+  if (
+    !validateCurrency(from.value, fromErrorSpan) ||
+    !validateCurrency(to.value, toErrorSpan)
+  ) {
+    return;
+  }
+});
+
+reverseButton.addEventListener("click", () => {
+  const { from: fromCode, to: toCode } = state.convertData;
+
+  if (!fromCode || !toCode) {
+    return;
+  }
+
+  state.convertData = {
+    from: toCode,
+    to: fromCode,
+  };
+
+  from.value = toCode;
+  to.value = fromCode;
 });

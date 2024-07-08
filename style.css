@@ -59,7 +59,11 @@ img {
   object-fit: cover; }
 
 .error-message {
-  color: red; }
+  color: red;
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+  font-size: 14px; }
 
 .exchanger {
   display: flex;
@@ -109,8 +113,6 @@ img {
     line-height: 28.8px;
     margin-bottom: 5px; }
   .exchanger__button {
-    width: 20px;
-    height: 16px;
     cursor: pointer; }
   .exchanger__convert {
     color: #262626;

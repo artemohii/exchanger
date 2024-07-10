@@ -14,7 +14,22 @@ async function getCodes() {
 }
 
 async function getConvertionResult() {
-  /* вывести в консоль пример обьекта с ответом  */
+  const { amount, from, to } = state.convertData;
+  try {
+    const response = await fetch(`${state.url}/pair/${from}/${to}/${amount}`);
+    const data = await response.json();
+    if (data.result === "success") {
+      state.convertResult = {
+        lastUpdate: data.time_last_update_utc,
+        baseCode: data.base_code,
+        targetCode: data.target_code,
+        convertRate: data.conversion_rate,
+        convertResult: data.conversion_result,
+      };
+    }
+  } catch (error) {
+    console.error("Error", error);
+  }
 }
 
-export { getCodes };
+export { getCodes, getConvertionResult };

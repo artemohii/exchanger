@@ -6,4 +6,11 @@ export default {
     from: "",
     to: "",
   },
+  convertResult: {
+    lastUpdate: "",
+    baseCode: "",
+    targetCode: "",
+    convertRate: "",
+    convertResult: "",
+  },
 };

@@ -2,6 +2,7 @@ import vars from "./vars.js";
 import state from "./state.js";
 import { filterCurrencies } from "./utils.js";
 import { validateCurrency } from "./validate.js";
+import { getConvertionResult } from "./requests.js";
 const {
   currenciesInputs,
   currenciesLists,
@@ -42,7 +43,7 @@ currenciesLists.forEach((list) => {
   });
 });
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit",async (e) => {
   e.preventDefault();
   state.convertData = {
     amount: amount.value,
@@ -56,6 +57,10 @@ form.addEventListener("submit", (e) => {
   ) {
     return;
   }
+
+  await getConvertionResult();
+  console.log(state.convertResult);
+  /* render */
 });
 
 reverseButton.addEventListener("click", () => {

@@ -68,6 +68,8 @@ img {
 .exchanger {
   display: flex;
   flex-direction: column;
+  max-width: 600px;
+  width: 100%;
   gap: 30px;
   color: #ffffff;
   background: #f7f7f8;

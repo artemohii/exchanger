@@ -5,7 +5,6 @@ export default {
   from: document.querySelector("#from"),
   to: document.querySelector("#to"),
   form: document.querySelector(".exchanger__form"),
-  fromErrorSpan: document.getElementById("fromError"),
-  toErrorSpan: document.getElementById("toError"),
-  reverseButton: document.querySelector(".exchanger__button")
+  reverseButton: document.querySelector(".exchanger__button"),
+  exchangerResult: document.querySelector(".exchanger__result"),
 };

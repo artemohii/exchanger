@@ -37,7 +37,7 @@
           </div>
           <div class="exchanger__form-group">
             <label for="from" class="exchanger__label">From</label>
-            <span id="fromError" class="error-message"></span>
+            <span class="error-message"></span>
             <input
               type="text"
               id="from"
@@ -53,7 +53,7 @@
           <button type="button" class="exchanger__button"><=></button>
           <div class="exchanger__form-group">
             <label for="to" class="exchanger__label">To</label>
-            <span id="toError" class="error-message"></span>
+            <span class="error-message"></span>
 
             <input
               type="text"
@@ -64,23 +64,12 @@
               minlength="3"
               required
             />
-
             <ul class="exchanger__currencies"></ul>
           </div>
           <button class="exchanger__convert">Convert</button>
         </form>
-        <div class="exchanger__result">
-          2.50 USD American dollar = 91.63 UAH Ukrainian hryvnia
-        </div>
-        <div class="exchanger__footer">
-          <div class="exchange__rate">1.00$ = 36.65UAH</div>
-          <div class="exchange__update">Last updated: 10 december 2023</div>
-        </div>
+        <div class="exchanger__result"></div>
       </div>
     </div>
-    <!-- 
-сделать верстку и стили
-
-   -->
   </body>
 </html>

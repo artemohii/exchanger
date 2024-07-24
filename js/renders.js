@@ -1,7 +1,8 @@
 import state from "./state.js";
 import vars from "./vars.js";
+import { createResultTemplate } from "./templates.js";
 
-const { currenciesLists } = vars;
+const { currenciesLists, exchangerResult } = vars;
 
 function renderCurrenciesList(codes = state.codes) {
   currenciesLists.forEach((list) => {
@@ -9,30 +10,16 @@ function renderCurrenciesList(codes = state.codes) {
   });
 }
 
-function renderFilteredCurrencies(codes, list) {
-  renderCurrenciesItems(codes, list);
-}
-
 function renderCurrenciesItems(codes, list) {
   let listItems = "";
   codes.forEach(([code, name]) => {
     listItems += `<li class="exchanger__li">${code} | ${name} </li>`;
   });
-  list.innerHTML = listItems;
+  list.innerHTML = listItems || "Currencies not found";
 }
 
-/* function renderCurrenciesList(codes) {
-  currenciesLists.forEach((list) => {
-    let listItems = "";
-    state.codes.forEach(([code, name]) => {
-      if (code.toLowerCase().slice(0, 3) === filter.toLowerCase()) {
-        listItems += `<li class="exchanger__li">${code} | ${name}</li>`;
-      } else {
-        list.previousElementSibling.style.border = "1px solid red";
-      }
-    });
-    list.innerHTML = listItems;
-  });
-} */
+function renderResult() {
+  exchangerResult.innerHTML = createResultTemplate();
+}
 
-export { renderCurrenciesList, renderFilteredCurrencies };
+export { renderCurrenciesList, renderResult, renderCurrenciesItems };

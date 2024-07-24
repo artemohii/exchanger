@@ -1,16 +1,18 @@
 /* вывести сообщение об ошибке если не совпадает код валюты с кодом из state*/
 import state from "./state.js";
 
-function validateCurrency(currency, errorSpan) {
+function validateCurrency(input) {
   const { codes } = state;
+  const spanError = input.previousElementSibling;
 
-  const isCorrect = codes.some(([code]) => code === currency);
+  const isCorrect = codes.some(([code]) => code === input.value);
 
   if (!isCorrect) {
-    errorSpan.textContent = "Choose correct currency";
+    spanError.textContent = "Choose correct currency";
+    /* добавить класс и застилизовать  */
     return false;
   } else {
-    errorSpan.textContent = "";
+    spanError.textContent = "";
     return true;
   }
 }

@@ -1,8 +1,9 @@
 import vars from "./vars.js";
 import state from "./state.js";
-import { filterCurrencies } from "./utils.js";
+import { controlListHeight, filterCurrencies } from "./utils.js";
 import { validateCurrency } from "./validate.js";
 import { getConvertionResult } from "./requests.js";
+import { renderResult } from "./renders.js";
 const {
   currenciesInputs,
   currenciesLists,
@@ -10,15 +11,12 @@ const {
   amount,
   from,
   to,
-  toErrorSpan,
-  fromErrorSpan,
   reverseButton,
 } = vars;
 
 currenciesInputs.forEach((input) => {
   input.addEventListener("click", () => {
-    input.nextElementSibling.style.height = "200px";
-    /* ??? */
+    controlListHeight(input.nextElementSibling);
   });
 
   input.addEventListener("input", filterCurrencies);
@@ -28,8 +26,6 @@ window.addEventListener("click", (e) => {
   if (!e.target.classList.contains("exchanger__input")) {
     currenciesLists.forEach((list) => {
       list.style.height = "0";
-
-      /* ??? */
     });
   }
 });
@@ -43,7 +39,7 @@ currenciesLists.forEach((list) => {
   });
 });
 
-form.addEventListener("submit",async (e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
   state.convertData = {
     amount: amount.value,
@@ -51,16 +47,15 @@ form.addEventListener("submit",async (e) => {
     to: to.value,
   };
 
-  if (
-    !validateCurrency(from.value, fromErrorSpan) ||
-    !validateCurrency(to.value, toErrorSpan)
-  ) {
+  const isFromValid = validateCurrency(from);
+  const isToValid = validateCurrency(to);
+
+  if (!isFromValid || !isToValid) {
     return;
   }
 
   await getConvertionResult();
-  console.log(state.convertResult);
-  /* render */
+  renderResult();
 });
 
 reverseButton.addEventListener("click", () => {

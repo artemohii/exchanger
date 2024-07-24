@@ -1,5 +1,5 @@
 import state from "./state.js";
-import { renderFilteredCurrencies } from "./renders.js";
+import { renderCurrenciesItems } from "./renders.js";
 
 function filterCurrencies(e) {
   const value = e.target.value.toUpperCase();
@@ -8,16 +8,20 @@ function filterCurrencies(e) {
   const filteredCodes = state.codes.filter(
     ([code, name]) => code.includes(value) || name.toUpperCase().includes(value)
   );
-  controlListHeight(currentList, filteredCodes.length);
-  renderFilteredCurrencies(filteredCodes, currentList);
+  state.filteredCodes = filteredCodes;
+  controlListHeight(currentList);
+  renderCurrenciesItems(filteredCodes, currentList);
 }
 
-function controlListHeight(list, length) {
-  if (length <= 6) {
-    list.style.height = "fit-content";
-  } else {
+function controlListHeight(list) {
+  const length = state.filteredCodes.length;
+  if (length === 0 || length > 6) {
     list.style.height = "200px";
+  } else if (length <= 6) {
+    list.style.height = "fit-content";
   }
 }
 
-export { filterCurrencies };
+/* найти название валюты по коду валюты (name) */
+
+export { filterCurrencies, controlListHeight };

@@ -1,4 +1,5 @@
 import state from "./state.js";
+import { findFullName } from "./utils.js";
 
 function createResultTemplate() {
   const {
@@ -13,7 +14,9 @@ function createResultTemplate() {
   } = state;
 
   return `
-    <p>${amount} ${baseCode} name = ${convertResult} ${targetCode} name</p>
+    <p>${amount} ${baseCode} ${findFullName(
+    baseCode
+  )} = ${convertResult} ${targetCode} ${findFullName(targetCode)}</p>
     <p>1 ${baseCode} = ${convertRate} ${targetCode}</p>
     <p>Last update: ${lastUpdate}</p>
   `;

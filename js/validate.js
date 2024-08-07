@@ -1,4 +1,3 @@
-/* вывести сообщение об ошибке если не совпадает код валюты с кодом из state*/
 import state from "./state.js";
 
 function validateCurrency(input) {
@@ -9,7 +8,6 @@ function validateCurrency(input) {
 
   if (!isCorrect) {
     spanError.textContent = "Choose correct currency";
-    /* добавить класс и застилизовать  */
     return false;
   } else {
     spanError.textContent = "";
@@ -18,4 +16,3 @@ function validateCurrency(input) {
 }
 
 export { validateCurrency };
-/* добавить спаны в каждый инпут отдельно и в спаны добавить ошибки */

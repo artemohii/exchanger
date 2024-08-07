@@ -20,8 +20,29 @@ function controlListHeight(list) {
   } else if (length <= 6) {
     list.style.height = "fit-content";
   }
+  state.filteredCodes = [];
 }
 
-/* найти название валюты по коду валюты (name) */
+function findFullName(code) {
+  const [, name] = state.codes.find((item) => item.includes(code));
+  return name;
+  // find, findIndex, reduce, sort, filter, map, forEach, some, every
 
-export { filterCurrencies, controlListHeight };
+  /* let baseName = "";
+  let targetName = "";
+
+  state.codes.forEach(([code, name]) => {
+    if (code === state.convertResult.baseCode) {
+      baseName = name;
+      // console.log(name);
+    }
+    if (code === state.convertResult.targetCode) {
+      targetName = name;
+    }
+    console.log(code);
+  });
+  // console.log(state.codes);
+  return [baseName, targetName]; */
+}
+
+export { filterCurrencies, controlListHeight, findFullName };

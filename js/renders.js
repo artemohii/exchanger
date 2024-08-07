@@ -22,4 +22,5 @@ function renderResult() {
   exchangerResult.innerHTML = createResultTemplate();
 }
 
+
 export { renderCurrenciesList, renderResult, renderCurrenciesItems };

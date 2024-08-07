@@ -6,6 +6,7 @@ async function getCodes() {
     const data = await response.json();
     if (data.result === "success") {
       state.codes = data.supported_codes;
+
       return data;
     }
   } catch (error) {
